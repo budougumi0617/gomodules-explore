@@ -1,8 +1,18 @@
-.PHONY: build112 run112 run help
+.PHONY: build111 run111 build112 run112 run help
 
 .DEFAULT_GOAL := help
 
 VERSION_TAG ?= latest
+
+111_APPNAME := go111
+111_IMAGENAME := $(111_APPNAME):$(VERSION_TAG)
+
+build111: ## Build go1.11 container image
+	docker build -f ./docker111/Dockerfile \
+		-t $(111_IMAGENAME) .
+
+run111: ## Start go1.11 container
+	docker run -it --rm --name $(111_APPNAME) $(111_IMAGENAME)
 
 112_APPNAME := go112
 112_IMAGENAME := $(112_APPNAME):$(VERSION_TAG)
