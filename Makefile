@@ -12,7 +12,7 @@ build111: ## Build go1.11 container image
 		-t $(111_IMAGENAME) .
 
 run111: ## Start go1.11 container
-	docker run -it --rm --name $(111_APPNAME) $(111_IMAGENAME)
+	docker run -it --rm --name $(111_APPNAME) $(111_IMAGENAME) $(ARG)
 
 112_APPNAME := go112
 112_IMAGENAME := $(112_APPNAME):$(VERSION_TAG)
@@ -22,7 +22,7 @@ build112: ## Build go1.12 container image
 		-t $(112_IMAGENAME) .
 
 run112: ## Start go1.12 container
-	docker run -it --rm --name $(112_APPNAME) $(112_IMAGENAME)
+	docker run -it --rm --name $(112_APPNAME) $(112_IMAGENAME) $(ARG)
 
 # 各コマンドについたコメントを表示する
 help: ## Show options
