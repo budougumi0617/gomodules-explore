@@ -21,6 +21,8 @@ build112: ## Build go1.12 container image
 	docker build -f ./docker112/Dockerfile \
 		-t $(112_IMAGENAME) .
 
+build: build111 build112 ## build both images
+
 run112: ## Start go1.12 container
 	docker run -it --rm --name $(112_APPNAME) $(112_IMAGENAME) $(ARG)
 
