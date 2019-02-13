@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
-export GO111MODULE=on; go run -v main.go
+go run -v main.go
+GO111MODULE=on go run -v main.go
