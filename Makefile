@@ -8,7 +8,8 @@ VERSION_TAG ?= latest
 111_IMAGENAME := $(111_APPNAME):$(VERSION_TAG)
 
 build111: ## Build go1.11 container image
-	docker build -f ./docker111/Dockerfile \
+	docker build -f ./Dockerfile \
+		--build-arg GOVERSION=1.11.5 \
 		-t $(111_IMAGENAME) .
 
 run111: ## Start go1.11 container
@@ -18,7 +19,8 @@ run111: ## Start go1.11 container
 112_IMAGENAME := $(112_APPNAME):$(VERSION_TAG)
 
 build112: ## Build go1.12 container image
-	docker build -f ./docker112/Dockerfile \
+	docker build -f ./Dockerfile \
+		--build-arg GOVERSION=1.12rc1 \
 		-t $(112_IMAGENAME) .
 
 build: build111 build112 ## build both images

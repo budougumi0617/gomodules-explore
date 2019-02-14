@@ -1,4 +1,5 @@
-FROM golang:1.12rc1-stretch
+ARG GOVERSION
+FROM golang:$GOVERSION-stretch
 
 WORKDIR /go/src/sample
 COPY sample/ .
@@ -8,8 +9,12 @@ WORKDIR /go/src/test
 COPY ./temp/main.go .
 COPY sh/ .
 
+WORKDIR /tmp/replace_import
+COPY ./replace_import .
+
 WORKDIR /tmp/test
 COPY ./temp/main.go .
 COPY sh/ .
+RUN go version
 
 CMD ["bash"]
